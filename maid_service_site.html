@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MaidEase - Maid Service</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #fff; color: #000; }
+    header { display: flex; justify-content: space-between; align-items: center; background: #1e3a8a; color: #fff; padding: 10px 20px; position: sticky; top: 0; z-index: 1000; }
+    header h1 { margin: 0; font-size: 24px; }
+    nav { display: flex; gap: 15px; }
+    nav a { color: #fff; text-decoration: none; transition: color 0.3s ease; }
+    nav a:hover { color: #facc15; }
+    .btn { background: #000; color: #fff; padding: 10px 18px; border: none; cursor: pointer; border-radius: 6px; transition: transform 0.3s ease, background 0.3s ease; }
+    .btn:hover { background: #333; transform: scale(1.05); }
+    section { padding: 40px 20px; text-align: center; animation: fadeIn 1s ease-in-out; }
+    .hero { background: #dbeafe; padding: 60px 20px; animation: slideIn 1s ease-out; }
+    .services { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
+    .card { background: #fff; border: 1px solid #ddd; padding: 20px; border-radius: 12px; width: 280px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .card:hover { transform: translateY(-8px); box-shadow: 0 8px 16px rgba(0,0,0,0.2); }
+    table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+    th, td { border: 1px solid #ddd; padding: 12px; }
+    th { background: #1e3a8a; color: #fff; }
+    footer { background: #000; color: #fff; text-align: center; padding: 20px; margin-top: 40px; }
+    footer a { color: #fff; margin: 0 10px; text-decoration: none; transition: color 0.3s ease; }
+    footer a:hover { color: #facc15; }
+    iframe { border: none; width: 100%; max-width: 640px; border-radius: 8px; }
+
+    /* Animations */
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes slideIn { from { transform: translateY(-50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      nav { display: none; flex-direction: column; background: #1e3a8a; position: absolute; top: 60px; right: 0; width: 200px; padding: 10px; }
+      nav.show { display: flex; }
+      .menu-btn { display: block; cursor: pointer; font-size: 24px; }
+      .services { flex-direction: column; align-items: center; }
+      .card { width: 90%; }
+      iframe { width: 100%; height: 600px; }
+    }
+    @media (min-width: 769px) {
+      .menu-btn { display: none; }
+    }
+  </style>
+  <script>
+    function showPage(pageId) {
+      document.querySelectorAll('main > section').forEach(sec => sec.style.display = 'none');
+      document.getElementById(pageId).style.display = 'block';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function toggleMenu() {
+      document.querySelector('nav').classList.toggle('show');
+    }
+    window.onload = () => showPage('home');
+  </script>
+</head>
+<body>
+  <header>
+    <h1>MaidEase</h1>
+    <div class="menu-btn" onclick="toggleMenu()">☰</div>
+    <nav>
+      <a href="#" onclick="showPage('home')">Home</a>
+      <a href="#" onclick="showPage('services')">Services</a>
+      <a href="#" onclick="showPage('packages')">Packages</a>
+      <a href="#" onclick="showPage('about')">About Us</a>
+      <a href="#" onclick="showPage('contact')">Contact</a>
+    </nav>
+    <button class="btn" onclick="showPage('booking')">Book Now</button>
+  </header>
+
+  <main>
+    <!-- Home -->
+    <section id="home">
+      <div class="hero">
+        <h2>Trusted Maids for Cleaning, Cooking & Babysitting</h2>
+        <p>We make your home shine with care and trust.</p>
+        <button class="btn" onclick="showPage('booking')">Book Your Maid Today</button>
+      </div>
+      <div class="services">
+        <div class="card">🧹 <h3>Cleaning</h3><p>Spotless daily & deep cleaning</p></div>
+        <div class="card">🍲 <h3>Cooking</h3><p>Healthy & homestyle meals</p></div>
+        <div class="card">👶 <h3>Babysitting</h3><p>Safe & caring babysitters</p></div>
+      </div>
+      <div>
+        <h3>Why Choose Us</h3>
+        <ul style="list-style:none; padding:0;">
+          <li>✔ Verified Maids</li>
+          <li>✔ Affordable Packages</li>
+          <li>✔ Trusted by 1000+ Families</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Testimonials</h3>
+        <p>⭐⭐⭐⭐⭐ "Great service, reliable maids!" – Priya S.</p>
+        <p>⭐⭐⭐⭐ "Affordable and professional." – Rahul K.</p>
+      </div>
+      <div style="background:#1e3a8a; color:#fff; padding:20px; border-radius:12px; margin-top:20px;">
+        <h3>Experience Our Free Trial Cleaning</h3>
+        <button class="btn" onclick="showPage('booking')">Book Your Free Trial</button>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services">
+      <h2>Our Services</h2>
+      <div class="services">
+        <div class="card">🧹 <h3>Cleaning Services</h3><p>Daily, deep, kitchen, dusting</p><button class="btn" onclick="showPage('booking')">Book Now</button></div>
+        <div class="card">🍲 <h3>Cooking Services</h3><p>Homestyle, diet plans, meal prep</p><button class="btn" onclick="showPage('booking')">Book Now</button></div>
+        <div class="card">👶 <h3>Babysitting Services</h3><p>Hourly, day & night shifts</p><button class="btn" onclick="showPage('booking')">Book Now</button></div>
+      </div>
+    </section>
+
+    <!-- Packages -->
+    <section id="packages">
+      <h2>Packages & Pricing</h2>
+      <table>
+        <tr><th>Plan</th><th>Price</th><th>Includes</th></tr>
+        <tr><td>Hourly (On-Demand)</td><td>₹199/hr</td><td>Cleaning only</td></tr>
+        <tr><td>Daily Plan(On-Demand)</td><td>₹499/day</td><td>Cleaning, Cooking, Any kind of help</td></tr>
+        <tr><td>Weekly Plan(On-Demand)</td><td>₹1499/week</td><td>Cleaning, Cooking, Any kind of help</td></tr>
+        <tr><td>Monthly Plan</td><td>₹5999/month</td><td>Cleaning, Cooking, Washing etc</td></tr>
+        <tr><td>Only Cleaning</td><td>₹2000/month</td><td>Cleaning only </td></tr>
+        <tr><td>Only Cooking</td><td>₹1799/month</td><td>Cooking only </td></tr>
+      </table>
+      <h2>Special Occasion</h2>
+      <table>
+        <tr><th>Plan for</th><th>Price</th><th>Includes</th></tr>
+        <tr><td>Wedding plan</td><td>₹7999/All 3 days</td><td>Cooking, Serving, Cleaning etc </td></tr>
+        <tr><td>Birthday plan</td><td>₹4999/All day and night </td><td>Cooking, Serving, Cleaning, on demand etc </td></tr>
+      </table>
+
+    </section>
+
+    <!-- Booking -->
+    <section id="booking">
+      <h2>Book Your Maid</h2>
+      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfk15PmCJWVmuqXMYmMh5zmD5PAekw3u-X4ZsvBh1AniRfo_Q/viewform?embedded=true" width="640" height="824" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+    </section>
+
+    <!-- About -->
+    <section id="about">
+      <h2>About Us</h2>
+       <p>Our mission is to provide reliable, safe, and professional maid and babysitting services directly at your doorstep. We believe every family deserves trusted help to make life easier.</p>
+    <p><strong>Our Vision:</strong> To become the most dependable homecare service provider, bringing peace of mind and comfort to every household.</p>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <h2>Contact Us</h2>
+      <p>📍 Our Location</p>
+      <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6566.87887259253!2d75.2709773767313!3d32.45170424469309!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391cddc13e62c9b3%3A0x5a626f04f3b5e8f5!2sHiranagar%2C%20Jammu%20and%20Kashmir%20184441!5e0!3m2!1sen!2sin!4v1728034030191!5m2!1sen!2sin"  
+          width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy"  
+           referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+
+      <p>📍 Location: Hiranagar, Jammu, India</p>
+      <p>📞 Phone: +91- 7298370570, 8493884406</p>
+      <p>📧 Email: sharmaraghuvansh27@gmail.com, akshitkumarsharama@gmail.com</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 MaidEase. All Rights Reserved.</p>
+    <div>
+      <a href="#">Facebook</a>
+      <a href="#">Instagram</a>
+      <a href="#">Twitter</a>
+    </div>
+  </footer>
+</body>
+</html>
