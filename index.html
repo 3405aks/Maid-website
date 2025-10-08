@@ -32,6 +32,20 @@
     @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     @keyframes slideIn { from { transform: translateY(-50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
 
+    #brochure iframe {
+  width: 100%;
+  height: 70vh;
+  border: none;
+  border-radius: 10px;
+}
+
+@media (max-width: 768px) {
+  #brochure iframe {
+    height: 60vh;
+  }
+}
+
+
     /* Responsive */
     @media (max-width: 768px) {
       nav { display: none; flex-direction: column; background: #1e3a8a; position: absolute; top: 60px; right: 0; width: 200px; padding: 10px; }
@@ -127,31 +141,39 @@
       </div>
     </section>
 
-    <!-- Packages -->
-    <section id="packages">
-      
-       <!-- PDF Pop-Up Section -->
-<section class="pdf-popup" style="text-align:center; padding:40px;">
-  <h2 style="color:#007bff; margin-bottom:20px;">📄 View Our Service Brochure</h2>
-  <button onclick="openPDF()" 
-          style="background:#007bff; color:#fff; padding:12px 25px; border:none; border-radius:8px; cursor:pointer; font-size:16px;">
-    View PDF
-  </button>
+    <!-- ===== PDF Section ===== -->
+<section id="brochure" style="background-color:#f9f9f9; padding:60px 20px; text-align:center;">
+  <h2 style="color:#007bff; font-size:28px; margin-bottom:10px;">📘 Our Service Brochure</h2>
+  <p style="color:#555; margin-bottom:30px;">
+    Learn more about our cleaning, cooking, and event packages in detail.
+  </p>
+
+  <div style="max-width:900px; margin:auto; background:#fff; padding:20px; 
+              border-radius:15px; box-shadow:0 4px 12px rgba(0,0,0,0.1);">
+    <iframe 
+      src="maid-services.pdf"
+      width="100%" 
+      height="600px"
+      style="border:none; border-radius:10px;">
+    </iframe>
+  </div>
+
+  <div style="margin-top:25px;">
+    <a href="maid-services.pdf" target="_blank"
+       style="background:#007bff; color:#fff; padding:10px 20px; border-radius:8px; 
+              text-decoration:none; margin:10px; display:inline-block;">
+      🔍 View Full Screen
+    </a>
+    <a href="maid-services.pdf" download
+       style="background:#28a745; color:#fff; padding:10px 20px; border-radius:8px; 
+              text-decoration:none; margin:10px; display:inline-block;">
+      ⬇️ Download PDF
+    </a>
+  </div>
 </section>
 
-<!-- Modal (Hidden by Default) -->
-<div id="pdfModal" 
-     style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; 
-            background:rgba(0,0,0,0.85); justify-content:center; align-items:center; z-index:9999;">
-  <iframe src="maid-packages.pdf" 
-          width="80%" height="85%" 
-          style="border:none; border-radius:10px; box-shadow:0 0 20px rgba(0,0,0,0.3);">
-  </iframe>
-</div>
-      
-    </section>
-
-      
+    <!-- Packages -->
+    <section id="packages">
       <h2>Packages & Pricing</h2>
       <table>
         <tr><th>Plan</th><th>Price</th><th>Includes</th></tr>
