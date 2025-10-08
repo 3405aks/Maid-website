@@ -44,6 +44,16 @@
     @media (min-width: 769px) {
       .menu-btn { display: none; }
     }
+
+#pdfModal {
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
   </style>
   <script>
     function showPage(pageId) {
@@ -138,6 +148,26 @@
 
     </section>
 
+    <!-- PDF Pop-Up Section -->
+<section class="pdf-popup" style="text-align:center; padding:40px;">
+  <h2 style="color:#007bff; margin-bottom:20px;">📄 View Our Service Brochure</h2>
+  <button onclick="openPDF()" 
+          style="background:#007bff; color:#fff; padding:12px 25px; border:none; border-radius:8px; cursor:pointer; font-size:16px;">
+    View PDF
+  </button>
+</section>
+
+<!-- Modal (Hidden by Default) -->
+<div id="pdfModal" 
+     style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; 
+            background:rgba(0,0,0,0.85); justify-content:center; align-items:center; z-index:9999;">
+  <iframe src="files/maid-packages.pdf" 
+          width="80%" height="85%" 
+          style="border:none; border-radius:10px; box-shadow:0 0 20px rgba(0,0,0,0.3);">
+  </iframe>
+</div>
+
+
     <!-- Booking -->
     <section id="booking">
       <h2>Book Your Maid</h2>
@@ -175,5 +205,21 @@
       <a href="#">Twitter</a>
     </div>
   </footer>
+
+  <script>
+function openPDF() {
+  document.getElementById("pdfModal").style.display = "flex";
+}
+
+// Close modal when clicking outside the PDF
+document.addEventListener("click", function(event) {
+  const modal = document.getElementById("pdfModal");
+  if (event.target === modal) {
+    modal.style.display = "none";
+  }
+});
+</script>
+
+  
 </body>
 </html>
